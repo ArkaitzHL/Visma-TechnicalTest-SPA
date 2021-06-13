@@ -14,6 +14,7 @@
                 <input
                     id="firstName"
                     matInput
+                    maxlength="100"
                     required
                     placeholder="First name"
                     [formControl]="newEmployeeForm.get('firstNameFormControl')"
@@ -32,6 +33,7 @@
                 <input
                     id="lastName"
                     matInput
+                    maxlength="150"
                     required
                     placeholder="Last name"
                     [formControl]="newEmployeeForm.get('lastNameFormControl')"
