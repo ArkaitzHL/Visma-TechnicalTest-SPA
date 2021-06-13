@@ -1,0 +1,100 @@
+<div class="employee-dialog-container">
+    <h1 mat-dialog-title>
+        Employee
+    </h1>
+    <ng-container [formGroup]="newEmployeeForm">
+        <div
+            mat-dialog-content
+            id="employee-dialog-content"
+        >
+            <mat-form-field
+                class="mat-form-field-firstName"
+                hideRequiredMarker
+            >
+                <input
+                    id="firstName"
+                    matInput
+                    required
+                    placeholder="First name"
+                    [formControl]="newEmployeeForm.get('firstNameFormControl')"
+                />
+                <mat-error
+                    class="mat-error-required"
+                    *ngIf="newEmployeeForm.get('firstNameFormControl').hasError('required')"
+                >
+                    First name is required
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field
+                class="mat-form-field-lastName"
+                hideRequiredMarker
+            >
+                <input
+                    id="lastName"
+                    matInput
+                    required
+                    placeholder="Last name"
+                    [formControl]="newEmployeeForm.get('lastNameFormControl')"
+                />
+                <mat-error
+                    class="mat-error-required"
+                    *ngIf="newEmployeeForm.get('lastNameFormControl').hasError('required')"
+                >
+                    Last name is required
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field
+                class="mat-form-field-ssn"
+                hideRequiredMarker
+            >
+                <input
+                    id="ssn"
+                    matInput
+                    maxlength="12"
+                    required
+                    placeholder="Social security number"
+                    [formControl]="newEmployeeForm.get('ssnFormControl')"
+                />
+                <mat-error
+                    class="mat-error-required"
+                    *ngIf="newEmployeeForm.get('ssnFormControl').hasError('required')"
+                >
+                    Social security number is required
+                </mat-error>
+                <mat-error *ngIf="newEmployeeForm.get('ssnFormControl').hasError('pattern')">
+                    Social security number is not numeric
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field class="mat-form-field-phone">
+                <input
+                    id="phone"
+                    matInput
+                    maxlength="9"
+                    placeholder="Phone"
+                    [formControl]="newEmployeeForm.get('phoneFormControl')"
+                />
+                <mat-error *ngIf="newEmployeeForm.get('phoneFormControl').hasError('pattern')">
+                    Invalid phone number
+                </mat-error>
+            </mat-form-field>
+        </div>
+        <div mat-dialog-actions>
+            <button
+                mat-button
+                class="btn-decline"
+                mat-dialog-close
+            >
+                Cancel
+            </button>
+            <button
+                mat-flat-button
+                class="btn-accept"
+                color="accent"
+                (click)="accept()"
+                [disabled]="!newEmployeeForm.valid"
+            >
+                Add
+            </button>
+        </div>
+    </ng-container>
+</div>

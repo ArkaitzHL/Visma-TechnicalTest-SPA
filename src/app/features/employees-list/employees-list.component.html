@@ -1,0 +1,91 @@
+<div class="employee-list-container">
+    <mat-card class="card-table">
+        <ng-container [formGroup]="employeeListForm">
+            <mat-card-actions>
+                <button
+                    mat-flat-button
+                    color="accent"
+                    class="btn-create"
+                    (click)="createEmployee()"
+                >
+                    Add Employee
+                </button>
+            </mat-card-actions>
+            <mat-card-content>
+                <div class="data-table">
+                    <div class="table-container">
+                        <table
+                            mat-table
+                            [dataSource]="dataSource"
+                            matSort
+                            matSortActive="FirstName"
+                            matSortDirection="asc"
+                            matSortDisableClear
+                        >
+                            <!-- FirstName Column -->
+                            <ng-container matColumnDef="FirstName">
+                                <mat-header-cell
+                                    id="sortFirstName"
+                                    *matHeaderCellDef
+                                >
+                                    First Name
+                                </mat-header-cell>
+                                <mat-cell *matCellDef="let row">
+                                    <span class="mat-cell-text"> {{ row.firstName }} </span>
+                                </mat-cell>
+                            </ng-container>
+
+                            <!-- LastName Column -->
+                            <ng-container matColumnDef="LastName">
+                                <mat-header-cell
+                                    id="sortLastName"
+                                    *matHeaderCellDef
+                                >
+                                    Last Name
+                                </mat-header-cell>
+                                <mat-cell *matCellDef="let row">
+                                    <span class="mat-cell-text">{{ row.lastName }}</span>
+                                </mat-cell>
+                            </ng-container>
+
+                            <!-- SocialSecurityNumber Column -->
+                            <ng-container matColumnDef="SocialSecurityNumber">
+                                <mat-header-cell
+                                    id="sortSocialSecurityNumber"
+                                    *matHeaderCellDef
+                                >
+                                    Social Security Number
+                                </mat-header-cell>
+                                <mat-cell *matCellDef="let row">
+                                    <span class="mat-cell-text">{{ row.socialSecurityNumber }}</span>
+                                </mat-cell>
+                            </ng-container>
+
+                            <!-- Phone Column -->
+                            <ng-container matColumnDef="Phone">
+                                <mat-header-cell
+                                    id="sortPhone"
+                                    *matHeaderCellDef
+                                >
+                                    Phone
+                                </mat-header-cell>
+                                <mat-cell *matCellDef="let row">
+                                    <span class="mat-cell-text">{{ row.phone }}</span>
+                                </mat-cell>
+                            </ng-container>
+
+                            <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                            <mat-row *matRowDef="let row; columns: displayedColumns; let i = index"></mat-row>
+                        </table>
+                    </div>
+
+                    <mat-paginator
+                        [pageSize]="10"
+                        [hidePageSize]="true"
+                        class="hide-options"
+                    ></mat-paginator>
+                </div>
+            </mat-card-content>
+        </ng-container>
+    </mat-card>
+</div>

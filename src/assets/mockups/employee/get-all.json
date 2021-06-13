@@ -1,0 +1,16 @@
+[
+    {
+        "Id": 1,
+        "FirstName": "Employee1",
+        "LastName": "Employee 1",
+        "SocialSecurityNumber": "123456",
+        "Phone": "111222333"
+    },
+    {
+        "Id": 2,
+        "FirstName": "Employee2",
+        "LastName": "Employee 2",
+        "SocialSecurityNumber": "654321",
+        "Phone": "333222111"
+    }
+]
